@@ -2,6 +2,8 @@
 
 Un estudio creativo y galería interactiva de shaders GLSL acelerados por hardware en WebGL para crear, personalizar y exportar gradientes líquidos, remolinos fluidos, humo atmosférico, domain warping y auroras boreales.
 
+![Gradient Studio Preview](Caputara.png)
+
 ---
 
 ## 🚀 Inicio Rápido

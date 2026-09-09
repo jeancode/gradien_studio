@@ -1,0 +1,574 @@
+[
+  {
+    "id": "fluid-cyber-swirl",
+    "engine": "fluid",
+    "name": "Cyber Swirl",
+    "description": "Interactive dye advection with swirling vortices and reactive pointer turbulence.",
+    "category": "Fluid Dynamics",
+    "params": {
+      "speed": 0.85,
+      "scale": 1.4,
+      "swirl": 2.2,
+      "decay": 0.94,
+      "iterations": 5,
+      "brightness": 1.15,
+      "contrast": 1.25,
+      "grain": 0.035,
+      "blur": 1.2,
+      "colors": [
+        "#0f051d",
+        "#7928ca",
+        "#ff0080",
+        "#00dfd8",
+        "#4338ca"
+      ]
+    }
+  },
+  {
+    "id": "fluid-abyssal-dye",
+    "engine": "fluid",
+    "name": "Abyssal Ink",
+    "description": "Deep oceanic ink diffusion with slow viscous curling and luminous phosphorescence.",
+    "category": "Fluid Dynamics",
+    "params": {
+      "speed": 0.45,
+      "scale": 1.1,
+      "swirl": 1.6,
+      "decay": 0.96,
+      "iterations": 4,
+      "brightness": 1,
+      "contrast": 1.35,
+      "grain": 0.04,
+      "blur": 1.5,
+      "colors": [
+        "#020617",
+        "#0f172a",
+        "#0284c7",
+        "#38bdf8",
+        "#f0f9ff"
+      ]
+    }
+  },
+  {
+    "id": "warp-velvet-mist",
+    "engine": "warp",
+    "name": "Velvet Domain Warp",
+    "description": "Multi-tier recursive domain warping with multi-tap Gaussian blur for ultra-smooth transitions.",
+    "category": "Domain Warping",
+    "params": {
+      "speed": 0.6,
+      "scale": 2.5,
+      "warp1": 1.8,
+      "warp2": 1.2,
+      "blur": 2.5,
+      "brightness": 1.1,
+      "contrast": 1.2,
+      "grain": 0.03,
+      "colors": [
+        "#180b2b",
+        "#491069",
+        "#b5179e",
+        "#f72585",
+        "#7209b7"
+      ]
+    }
+  },
+  {
+    "id": "warp-silk-emerald",
+    "engine": "warp",
+    "name": "Silk Emerald Marbling",
+    "description": "Folded topological marbling with lush jade, emerald and golden highlights.",
+    "category": "Domain Warping",
+    "params": {
+      "speed": 0.5,
+      "scale": 2,
+      "warp1": 2.2,
+      "warp2": 1.5,
+      "blur": 2,
+      "brightness": 1.05,
+      "contrast": 1.3,
+      "grain": 0.025,
+      "colors": [
+        "#022c22",
+        "#064e3b",
+        "#059669",
+        "#34d399",
+        "#fef08a"
+      ]
+    }
+  },
+  {
+    "id": "noise-cosmic-ridge",
+    "engine": "noise",
+    "name": "Cosmic Ridge Noise",
+    "description": "Procedural 3D Simplex noise with harmonic ridged octaves and cellular boundaries.",
+    "category": "Procedural Noise",
+    "params": {
+      "speed": 0.7,
+      "scale": 2.2,
+      "octaves": 4,
+      "roughness": 0.52,
+      "distortion": 1.3,
+      "blur": 0.8,
+      "brightness": 1.1,
+      "contrast": 1.25,
+      "grain": 0.04,
+      "colors": [
+        "#09090b",
+        "#3b0764",
+        "#7e22ce",
+        "#a855f7",
+        "#38bdf8"
+      ]
+    }
+  },
+  {
+    "id": "noise-solar-flare",
+    "engine": "noise",
+    "name": "Solar Flare Noise",
+    "description": "Fiery plasma noise fields simulating solar coronal mass and thermal currents.",
+    "category": "Procedural Noise",
+    "params": {
+      "speed": 0.9,
+      "scale": 2.8,
+      "octaves": 5,
+      "roughness": 0.58,
+      "distortion": 1.8,
+      "blur": 1,
+      "brightness": 1.2,
+      "contrast": 1.3,
+      "grain": 0.035,
+      "colors": [
+        "#1a0500",
+        "#7c2d12",
+        "#ea580c",
+        "#facc15",
+        "#fffbeb"
+      ]
+    }
+  },
+  {
+    "id": "mesh-liquid-flow",
+    "engine": "mesh",
+    "name": "Liquid Mesh Gradient",
+    "description": "Dynamic multi-point spring mesh gradient deformed by physics and pointer interaction.",
+    "category": "Interactive Mesh",
+    "params": {
+      "speed": 0.75,
+      "scale": 1,
+      "swirl": 1.5,
+      "elasticity": 0.8,
+      "blur": 3,
+      "brightness": 1.05,
+      "contrast": 1.15,
+      "grain": 0.02,
+      "colors": [
+        "#2563eb",
+        "#db2777",
+        "#f59e0b",
+        "#10b981",
+        "#8b5cf6"
+      ]
+    }
+  },
+  {
+    "id": "atmosphere-volumetric-smoke",
+    "engine": "atmosphere",
+    "name": "Volumetric Smoke & Rays",
+    "description": "Atmospheric scattering with drifting smoke layers, crepuscular god rays and dust motes.",
+    "category": "Atmospheric Shader",
+    "params": {
+      "speed": 0.55,
+      "scale": 1.8,
+      "density": 1.6,
+      "godrays": 1.4,
+      "smokeCurl": 2,
+      "blur": 1.6,
+      "brightness": 1.1,
+      "contrast": 1.3,
+      "grain": 0.05,
+      "colors": [
+        "#050508",
+        "#1e1b4b",
+        "#4338ca",
+        "#a5b4fc",
+        "#e0e7ff"
+      ]
+    }
+  },
+  {
+    "id": "atmosphere-inferno-haze",
+    "engine": "atmosphere",
+    "name": "Inferno Haze",
+    "description": "Heavy smoldering smoke and ash plumes illuminated by glowing embers.",
+    "category": "Atmospheric Shader",
+    "params": {
+      "speed": 0.7,
+      "scale": 2,
+      "density": 2,
+      "godrays": 1.2,
+      "smokeCurl": 2.4,
+      "blur": 1.4,
+      "brightness": 1.15,
+      "contrast": 1.35,
+      "grain": 0.06,
+      "colors": [
+        "#0a0505",
+        "#450a0a",
+        "#b91c1c",
+        "#f97316",
+        "#ffedd5"
+      ]
+    }
+  },
+  {
+    "id": "aurora-polar-dream",
+    "engine": "aurora",
+    "name": "Polar Aurora & Bokeh",
+    "description": "Ethereal ribbons of atmospheric light with soft diffuse bokeh discs and spectral sheen.",
+    "category": "Aurora & Bokeh",
+    "params": {
+      "speed": 0.65,
+      "scale": 1.5,
+      "ribbons": 3,
+      "bokehSize": 1.4,
+      "bokehCount": 18,
+      "blur": 2.2,
+      "brightness": 1.15,
+      "contrast": 1.2,
+      "grain": 0.03,
+      "colors": [
+        "#020617",
+        "#064e3b",
+        "#10b981",
+        "#06b6d4",
+        "#c084fc"
+      ]
+    }
+  },
+  {
+    "id": "aurora-twilight-bokeh",
+    "engine": "aurora",
+    "name": "Twilight Bokeh Dream",
+    "description": "Romantic twilight sky filled with floating diffuse glowing bokeh particles and pastel lights.",
+    "category": "Aurora & Bokeh",
+    "params": {
+      "speed": 0.5,
+      "scale": 1.3,
+      "ribbons": 2,
+      "bokehSize": 2.2,
+      "bokehCount": 24,
+      "blur": 2.8,
+      "brightness": 1.05,
+      "contrast": 1.1,
+      "grain": 0.025,
+      "colors": [
+        "#0f172a",
+        "#312e81",
+        "#831843",
+        "#ec4899",
+        "#fbcfe8"
+      ]
+    }
+  },
+  {
+    "id": "caustics-caribbean-blue",
+    "engine": "caustics",
+    "name": "Caribbean Sunlit Water",
+    "description": "Crystalline turquoise water with shimmering solar caustics, chromatic dispersion and hover wakes.",
+    "category": "Agua & Cáusticas",
+    "params": {
+      "speed": 0.8,
+      "scale": 2.2,
+      "clarity": 1.5,
+      "refraction": 1.3,
+      "depth": 1.6,
+      "blur": 0.8,
+      "brightness": 1.18,
+      "contrast": 1.25,
+      "grain": 0.025,
+      "colors": [
+        "#032541",
+        "#004e7c",
+        "#00a6fb",
+        "#05d9e8",
+        "#e8faff"
+      ]
+    }
+  },
+  {
+    "id": "smoke-pyroclastic-ember",
+    "engine": "smoke",
+    "name": "Pyroclastic Volcanic Smoke",
+    "description": "Dense billowing smoke plumes curling upwards with glowing ember cores and aerodynamic hover wind.",
+    "category": "Humo Denso (Smoke)",
+    "params": {
+      "speed": 0.65,
+      "scale": 2.0,
+      "density": 2.4,
+      "buoyancy": 1.6,
+      "windPush": 2.0,
+      "blur": 1.4,
+      "brightness": 1.15,
+      "contrast": 1.35,
+      "grain": 0.05,
+      "colors": [
+        "#08080a",
+        "#271616",
+        "#7f1d1d",
+        "#ea580c",
+        "#fef08a"
+      ]
+    }
+  },
+  {
+    "id": "blur-velvet-cloud",
+    "engine": "blur",
+    "name": "Velvet Cloud Diffusion",
+    "description": "Ultra-defocused liquid Gaussian color clouds with dreamlike soft diffusion and glowing hover aura.",
+    "category": "Super Blur Velvet",
+    "params": {
+      "speed": 0.5,
+      "scale": 1.5,
+      "diffusion": 2.8,
+      "glowAura": 1.8,
+      "softness": 3.6,
+      "blur": 3.5,
+      "brightness": 1.1,
+      "contrast": 1.15,
+      "grain": 0.02,
+      "colors": [
+        "#1e1b4b",
+        "#4338ca",
+        "#a855f7",
+        "#f43f5e",
+        "#fed7aa"
+      ]
+    }
+  },
+  {
+    "id": "waves-quantum-resonance",
+    "engine": "waves",
+    "name": "Orbital Wave Resonance",
+    "description": "Physical harmonic wave interferometry with standing wave crests, nodal lines and cursor hover emitter.",
+    "category": "Ondas & Interferencia",
+    "params": {
+      "speed": 0.75,
+      "scale": 2.0,
+      "frequency": 34.0,
+      "damping": 1.4,
+      "emitters": 3.0,
+      "blur": 0.9,
+      "brightness": 1.15,
+      "contrast": 1.3,
+      "grain": 0.035,
+      "colors": [
+        "#030712",
+        "#1e293b",
+        "#0284c7",
+        "#38bdf8",
+        "#f0fdf4"
+      ]
+    }
+  },
+  {
+    "id": "iridescent-liquid-chrome",
+    "engine": "iridescent",
+    "name": "Liquid Chrome Iridescence",
+    "description": "Thin-film optical interference with liquid mercury curvature, soap-bubble rainbow sheen and cursor angle reflections.",
+    "category": "Cromo & Iridiscencia",
+    "params": {
+      "speed": 0.7,
+      "scale": 1.8,
+      "iridescence": 2.4,
+      "metallic": 1.6,
+      "curvature": 1.5,
+      "blur": 1.0,
+      "brightness": 1.15,
+      "contrast": 1.3,
+      "grain": 0.03,
+      "colors": [
+        "#0f172a",
+        "#334155",
+        "#a855f7",
+        "#06b6d4",
+        "#facc15"
+      ]
+    }
+  },
+  {
+    "id": "neonmist-nocturnal-fog",
+    "engine": "neonmist",
+    "name": "Nocturnal Neon Fog",
+    "description": "Dense night city mist with vibrant neon bleeding, asphalt reflections and volumetric hover flashlight beams.",
+    "category": "Niebla Neón",
+    "params": {
+      "speed": 0.6,
+      "scale": 1.8,
+      "mistDensity": 1.9,
+      "beamGlow": 2.2,
+      "chromaBleed": 1.6,
+      "blur": 1.5,
+      "brightness": 1.2,
+      "contrast": 1.3,
+      "grain": 0.04,
+      "colors": [
+        "#05050a",
+        "#1e1035",
+        "#c026d3",
+        "#06b6d4",
+        "#f43f5e"
+      ]
+    }
+  },
+  {
+    "id": "galaxy-andromeda-swirl",
+    "engine": "galaxy",
+    "name": "Andromeda Spiral Galaxy",
+    "description": "Rotating diffuse galactic spiral arms with interstellar dust clouds, supermassive core and hover gravitational vortex.",
+    "category": "Galaxias Cósmicas",
+    "params": {
+      "speed": 0.6,
+      "scale": 1.5,
+      "arms": 3.0,
+      "twist": 3.5,
+      "coreGlow": 2.2,
+      "blur": 1.6,
+      "brightness": 1.25,
+      "contrast": 1.35,
+      "grain": 0.035,
+      "colors": [
+        "#02040a",
+        "#140b2b",
+        "#7928ca",
+        "#38bdf8",
+        "#fef9c3"
+      ]
+    }
+  },
+  {
+    "id": "realsmoke-ethereal-flow",
+    "engine": "realsmoke",
+    "name": "Ethereal Drifting Smoke",
+    "description": "Silky curling smoke tendrils floating softly upwards with aerodynamic obstacle deflection on hover.",
+    "category": "Humo Real Flotando",
+    "params": {
+      "speed": 0.6,
+      "scale": 1.8,
+      "wisps": 2.2,
+      "diffusion": 1.6,
+      "airDeflect": 2.4,
+      "blur": 1.4,
+      "brightness": 1.15,
+      "contrast": 1.3,
+      "grain": 0.04,
+      "colors": [
+        "#07080d",
+        "#181b26",
+        "#4b5563",
+        "#9ca3af",
+        "#f3f4f6"
+      ]
+    }
+  },
+  {
+    "id": "fire-volcanic-inferno",
+    "engine": "fire",
+    "name": "Volcanic Plasma Fire",
+    "description": "Volumetric rising fire tongues with turbulent thermal convection, flying sparks and incandescent blackbody radiation.",
+    "category": "Fuego & Plasma",
+    "params": {
+      "speed": 0.85,
+      "scale": 1.8,
+      "flameHeight": 2.2,
+      "turbulence": 2.0,
+      "sparkCount": 1.6,
+      "blur": 1.0,
+      "brightness": 1.2,
+      "contrast": 1.35,
+      "grain": 0.035,
+      "colors": [
+        "#0a0302",
+        "#3b0a05",
+        "#b91c1c",
+        "#f97316",
+        "#fef08a"
+      ]
+    }
+  },
+  {
+    "id": "clouds-golden-sunset",
+    "engine": "clouds",
+    "name": "Golden Sunset Cumulus",
+    "description": "Soft fluffy cumulus clouds drifting across a sunset gradient with brilliant silver lining forward scattering.",
+    "category": "Nubes Celestes",
+    "params": {
+      "speed": 0.5,
+      "scale": 1.6,
+      "cloudDensity": 1.8,
+      "silverLining": 2.4,
+      "skyDepth": 1.4,
+      "blur": 1.2,
+      "brightness": 1.18,
+      "contrast": 1.25,
+      "grain": 0.03,
+      "colors": [
+        "#180b2b",
+        "#581c87",
+        "#c026d3",
+        "#fb923c",
+        "#fef3c7"
+      ]
+    }
+  },
+  {
+    "id": "starfield-deep-cosmos",
+    "engine": "starfield",
+    "name": "Deep Cosmos & Warp Starfield",
+    "description": "Parallax 3D deep starfield with twinkling colored stars, diffuse interstellar nebulae and shooting meteors.",
+    "category": "Estrellas & Warp",
+    "params": {
+      "speed": 0.7,
+      "scale": 2.0,
+      "starDensity": 2.5,
+      "twinkle": 2.4,
+      "nebulaGlow": 1.8,
+      "blur": 0.9,
+      "brightness": 1.25,
+      "contrast": 1.35,
+      "grain": 0.04,
+      "colors": [
+        "#020617",
+        "#0f172a",
+        "#38bdf8",
+        "#c084fc",
+        "#ffffff"
+      ]
+    }
+  },
+  {
+    "id": "tunnel-neon-hyperspace",
+    "engine": "tunnel",
+    "name": "Neon Cyber Hyperspace Tunnel",
+    "description": "Infinite 3D neon rib warp tunnel plunging forward into the abyss with interactive hover camera flight steering.",
+    "category": "Túneles Ciberespacio",
+    "params": {
+      "speed": 0.95,
+      "scale": 1.5,
+      "ribCount": 16.0,
+      "tunnelTwist": 2.4,
+      "depthFade": 1.8,
+      "blur": 0.8,
+      "brightness": 1.25,
+      "contrast": 1.35,
+      "grain": 0.035,
+      "colors": [
+        "#050510",
+        "#1e1b4b",
+        "#6366f1",
+        "#06b6d4",
+        "#f43f5e"
+      ]
+    }
+  }
+]

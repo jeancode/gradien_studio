@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gradient Studio // Interactive GLSL & Atmospheric Shader Suite</title>
+  <link rel="stylesheet" href="/css/studio.css">
+  <link rel="stylesheet" href="/css/controls.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="brand-section">
+        <div class="brand-logo">G</div>
+        <div>
+          <span class="brand-title">Gradient Studio</span>
+          <span class="brand-subtitle">GLSL FX</span>
+        </div>
+      </div>
+
+      <!-- Navigation Segmented Switcher -->
+      <nav class="nav-switcher">
+        <button id="nav-btn-gallery" class="nav-tab-btn active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          Gallery Cards
+        </button>
+        <button id="nav-btn-studio" class="nav-tab-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="12 8 8 12 12 16 12 8"></polygon>
+            <line x1="16" y1="12" x2="12" y2="12"></line>
+          </svg>
+          Studio Editor
+        </button>
+      </nav>
+
+      <!-- Topbar Controls -->
+      <div class="topbar-actions">
+        <span id="badge-fps" class="status-badge">60 FPS</span>
+        <span id="rec-status-badge" class="status-badge rec-badge hidden">REC: 0%</span>
+
+        <!-- Quality / DPR selector -->
+        <select id="select-dpr" class="studio-select" style="padding: 6px 10px; font-size: 11px;" title="Render Resolution">
+          <option value="1.0">Res 1x (Performance)</option>
+          <option value="1.5" selected>Res 1.5x (Balanced)</option>
+          <option value="2.0">Res 2x (Ultra Retina)</option>
+        </select>
+
+        <!-- Play / Pause -->
+        <button id="btn-play-pause" class="btn-icon" title="Play / Pause (Space)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        </button>
+
+        <!-- Snapshot -->
+        <button id="btn-snapshot" class="btn-icon" title="Capture High-Res PNG">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+            <circle cx="12" cy="13" r="4"></circle>
+          </svg>
+        </button>
+
+        <!-- Record Video -->
+        <button id="btn-record-video" class="btn-icon" title="Record 5s WebM Loop">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="23 7 16 12 23 17 23 7"></polygon>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+          </svg>
+        </button>
+
+        <!-- Fullscreen -->
+        <button id="btn-fullscreen" class="btn-icon" title="Toggle Fullscreen (F)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <polyline points="9 21 3 21 3 15"></polyline>
+            <line x1="21" y1="3" x2="14" y2="10"></line>
+            <line x1="3" y1="21" x2="10" y2="14"></line>
+          </svg>
+        </button>
+
+        <!-- Open Export Modal -->
+        <button id="btn-open-export" class="btn-primary" title="Export Code (E)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Export Snippet
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Views Area -->
+    <main class="view-container">
+      
+      <!-- VIEW 1: Gallery Cards ("Tarjetas") -->
+      <section id="view-gallery" class="gallery-scroll-area">
+        <div class="gallery-hero">
+          <h1>GLSL Gradient & Atmospheric Shader Suite</h1>
+          <p>Explore live hardware-accelerated shaders: interactive fluids, multi-tap domain warping, procedural noise, liquid meshes, atmospheric smoke, and bokeh auroras.</p>
+        </div>
+
+        <div class="gallery-toolbar">
+          <div id="cards-filters" class="filter-pills">
+            <!-- Populated dynamically by cards.js -->
+          </div>
+          <input type="text" id="cards-search" class="search-input" placeholder="Search presets or effects...">
+        </div>
+
+        <div id="cards-grid" class="cards-grid">
+          <!-- Preset Cards inserted here -->
+        </div>
+      </section>
+
+      <!-- VIEW 2: Studio Workspace ("Estudio Completo") -->
+      <section id="view-studio" class="view-studio hidden">
+        <div class="studio-canvas-container">
+          <canvas id="studio-canvas"></canvas>
+          <div class="canvas-hint-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <span id="canvas-hint-text">💧 Haz <span>clic o toca</span> para soltar gotas de agua con ondas físicas concéntricas • Arrastra para senderos de gotas</span>
+          </div>
+        </div>
+
+        <!-- Studio Sidebar -->
+        <aside class="studio-sidebar">
+          <div class="sidebar-header">
+            <div class="engine-selector-box">
+              <label class="input-label" for="select-engine">Shader Engine</label>
+              <select id="select-engine" class="studio-select">
+                <option value="fluid">1. Interactive GLSL Fluid Gradient (Remolinos)</option>
+                <option value="caustics">2. Hydro Caustics & Deep Water Waves (Agua)</option>
+                <option value="realsmoke">3. Real Drifting Smoke & Wisps (Humo Real Flotando)</option>
+                <option value="smoke">4. Dense Pyroclastic Smoke Plumes (Humo Denso)</option>
+                <option value="fire">5. Liquid Fire & Volcanic Plasma (Fuego)</option>
+                <option value="clouds">6. Atmospheric Cumulus Clouds (Nubes)</option>
+                <option value="galaxy">7. Spiral Galaxy & Cosmic Nebula (Galaxias Difuminadas)</option>
+                <option value="starfield">8. Deep Cosmic Starfield & Warp (Estrellas)</option>
+                <option value="tunnel">9. Cyber Hyperspace Tunnel & Wormhole (Túneles)</option>
+                <option value="blur">10. Deep Gaussian Velvet Blur Shader (Super Blur)</option>
+                <option value="waves">11. Orbital Wave Interference & Resonance (Ondas)</option>
+                <option value="iridescent">12. Liquid Chrome & Iridescent Pearl (Cromo)</option>
+                <option value="neonmist">13. Cyberpunk Neon Fog & Light Beams (Niebla)</option>
+                <option value="warp">14. Domain Warping Shader (Gaussian Softness)</option>
+                <option value="noise">15. Procedural WebGL Noise Gradient</option>
+                <option value="mesh">16. Liquid Mesh Gradient (Interactive)</option>
+                <option value="atmosphere">17. Cinematic Atmospheric Shader (Humo & Rays)</option>
+                <option value="aurora">18. Soft Bokeh / Diffuse Aurora Shader</option>
+              </select>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span id="active-preset-name" style="font-size: 13px; font-weight: 600; color: #fff;">Cyber Swirl</span>
+              <button id="btn-save-preset" class="btn-secondary" style="padding: 4px 10px; font-size: 11px;">
+                Save Preset
+              </button>
+            </div>
+          </div>
+
+          <div class="sidebar-body">
+            <!-- Mouse Interactivity Modes Section -->
+            <div class="control-group" style="background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3);">
+              <h4 class="group-title" style="color: #a5b4fc;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                Interacción con el Mouse
+              </h4>
+              <div class="engine-selector-box">
+                <select id="select-interaction" class="studio-select" style="font-size: 12px; padding: 8px 10px;">
+                  <option value="1" selected>💧 Gota de Agua & Ondas Físicas</option>
+                  <option value="2">💥 Golpecitos de Superficie (Taps)</option>
+                  <option value="3">🌊 Expansión de Gota (Shockwave Splash)</option>
+                  <option value="0">🌀 Remolinos / Vorticidad (Arrastre)</option>
+                  <option value="4">🧲 Atractor / Succión Gravitacional</option>
+                  <option value="5">🌧️ Lluvia Continua (Auto Gotas)</option>
+                  <option value="-1">🚫 Ninguno (Desactivado)</option>
+                </select>
+              </div>
+              <button id="btn-drop-center" class="btn-secondary" style="font-size: 11px; padding: 6px 12px; gap: 6px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                Soltar Gota en el Centro
+              </button>
+            </div>
+
+            <!-- Mouse Hover Effects Section (Al pasar el cursor sin clic) -->
+            <div class="control-group" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
+              <h4 class="group-title" style="color: #6ee7b7;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m4.93 4.93 4.24 4.24"></path>
+                  <path d="m14.83 9.17 4.24-4.24"></path>
+                  <path d="m14.83 14.83 4.24 4.24"></path>
+                  <path d="m9.17 14.83-4.24 4.24"></path>
+                </svg>
+                Efectos al Pasar el Cursor (Hover)
+              </h4>
+              <div class="engine-selector-box">
+                <select id="select-hover-mode" class="studio-select" style="font-size: 12px; padding: 8px 10px;">
+                  <option value="0" selected>🌀 1. Vórtice / Remolinos Fluidos (Swirl)</option>
+                  <option value="1">💧 2. Ondas de Agua Concéntricas (Ripples)</option>
+                  <option value="2">💡 3. Haz de Luz / Linterna Volumétrica (Spotlight)</option>
+                  <option value="3">🧲 4. Lente Gravitacional / Deformación (Magnetic Warp)</option>
+                  <option value="4">🌬️ 5. Viento / Deflexión Aerodinámica (Wind Blower)</option>
+                  <option value="5">🌈 6. Prisma / Dispersión Cromática (Prismatic Split)</option>
+                  <option value="6">✨ 7. Polvo Cósmico / Chispas Titilantes (Stardust)</option>
+                  <option value="7">💥 8. Ondas de Choque Continuas (Harmonic Pulse)</option>
+                  <option value="-1">🚫 Ninguno (Desactivado)</option>
+                </select>
+              </div>
+
+              <!-- Hover Strength slider -->
+              <div class="slider-row" style="margin-top: 8px;">
+                <div class="slider-info">
+                  <span class="slider-name">Fuerza de Hover</span>
+                  <span id="val-hover-strength" class="slider-val">1.0</span>
+                </div>
+                <input type="range" id="slider-hover-strength" class="studio-range" min="0" max="2.5" step="0.05" value="1.0">
+              </div>
+
+              <!-- Hover Radius slider -->
+              <div class="slider-row">
+                <div class="slider-info">
+                  <span class="slider-name">Radio de Influencia</span>
+                  <span id="val-hover-radius" class="slider-val">0.38</span>
+                </div>
+                <input type="range" id="slider-hover-radius" class="studio-range" min="0.1" max="1.0" step="0.02" value="0.38">
+              </div>
+            </div>
+
+            <!-- Palette Studio Section -->
+            <div class="control-group">
+              <h4 class="group-title">Color Ramp (5-Stop Harmony)</h4>
+              
+              <div class="palette-picker-grid">
+                <div class="color-input-wrapper" title="Stop 1">
+                  <div class="color-preview-badge" style="background: #0f051d;"></div>
+                  <input type="color" id="col-1" class="native-color-picker" value="#0f051d">
+                </div>
+                <div class="color-input-wrapper" title="Stop 2">
+                  <div class="color-preview-badge" style="background: #7928ca;"></div>
+                  <input type="color" id="col-2" class="native-color-picker" value="#7928ca">
+                </div>
+                <div class="color-input-wrapper" title="Stop 3">
+                  <div class="color-preview-badge" style="background: #ff0080;"></div>
+                  <input type="color" id="col-3" class="native-color-picker" value="#ff0080">
+                </div>
+                <div class="color-input-wrapper" title="Stop 4">
+                  <div class="color-preview-badge" style="background: #00dfd8;"></div>
+                  <input type="color" id="col-4" class="native-color-picker" value="#00dfd8">
+                </div>
+                <div class="color-input-wrapper" title="Stop 5">
+                  <div class="color-preview-badge" style="background: #4338ca;"></div>
+                  <input type="color" id="col-5" class="native-color-picker" value="#4338ca">
+                </div>
+              </div>
+
+              <div class="palette-actions-row">
+                <select id="select-palette" class="studio-select" style="flex: 2; padding: 7px 10px; font-size: 12px;">
+                  <!-- Options added dynamically -->
+                </select>
+                <button id="btn-randomize" class="btn-secondary" title="Randomize Colors (R)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 3 21 3 21 8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21 16 21 21 16 21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                  </svg>
+                  Random
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Sliders (Engine Specific + Optical/Blur) -->
+            <div id="dynamic-controls" style="display: flex; flex-direction: column; gap: 18px;">
+              <!-- Inserted dynamically by StudioControls.buildDynamicControls -->
+            </div>
+          </div>
+        </aside>
+      </section>
+
+    </main>
+
+    <!-- EXPORT MODAL -->
+    <div id="export-modal" class="modal-overlay hidden">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3>Export Code Snippet</h3>
+          <button id="btn-close-modal" class="modal-close-btn">&times;</button>
+        </div>
+
+        <div class="modal-tabs">
+          <button class="export-tab-btn active" data-format="glsl">Raw GLSL Shader</button>
+          <button class="export-tab-btn" data-format="html">Standalone HTML File</button>
+          <button class="export-tab-btn" data-format="react">React / JSX Component</button>
+          <button class="export-tab-btn" data-format="css">CSS Mesh Fallback</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="code-container">
+            <pre id="export-code-display"></pre>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <span class="modal-footer-hint">Zero dependencies required. Ready for production.</span>
+          <div class="modal-actions-row">
+            <button id="btn-download-html" class="btn-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download HTML
+            </button>
+            <button id="btn-copy-code" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy to Clipboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Shader scripts -->
+  <script src="/js/shaders/common.glsl.js"></script>
+  <script src="/js/shaders/fluid.glsl.js"></script>
+  <script src="/js/shaders/caustics.glsl.js"></script>
+  <script src="/js/shaders/realsmoke.glsl.js"></script>
+  <script src="/js/shaders/smoke.glsl.js"></script>
+  <script src="/js/shaders/fire.glsl.js"></script>
+  <script src="/js/shaders/clouds.glsl.js"></script>
+  <script src="/js/shaders/galaxy.glsl.js"></script>
+  <script src="/js/shaders/starfield.glsl.js"></script>
+  <script src="/js/shaders/tunnel.glsl.js"></script>
+  <script src="/js/shaders/blur.glsl.js"></script>
+  <script src="/js/shaders/waves.glsl.js"></script>
+  <script src="/js/shaders/iridescent.glsl.js"></script>
+  <script src="/js/shaders/neonmist.glsl.js"></script>
+  <script src="/js/shaders/warp.glsl.js"></script>
+  <script src="/js/shaders/noise.glsl.js"></script>
+  <script src="/js/shaders/mesh.glsl.js"></script>
+  <script src="/js/shaders/atmosphere.glsl.js"></script>
+  <script src="/js/shaders/aurora.glsl.js"></script>
+
+  <!-- Core & UI scripts -->
+  <script src="/js/core/palette.js"></script>
+  <script src="/js/core/gl-renderer.js"></script>
+  <script src="/js/core/recorder.js"></script>
+  <script src="/js/ui/exporter.js"></script>
+  <script src="/js/ui/cards.js"></script>
+  <script src="/js/ui/controls.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
